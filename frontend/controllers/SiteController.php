@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\models\EntryForm;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -258,6 +259,10 @@ class SiteController extends Controller
         ]);
     }
     public function actionHello(){
-        echo 111;
+        $form =new EntryForm;
+        if($form->load(Yii::$app->request->post()) && $form->validate()){
+            return $this->renderPartial("hellores",['model'=>$form]);
+        }
+        return $this->renderPartial("hello",['name'=>'abc','model'=>$form]);
     }
 }
