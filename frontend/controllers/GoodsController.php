@@ -19,6 +19,14 @@ class GoodsController extends Controller
     }
 
     public function actionLists(){
+        print_r(\Yii::$app->user->isGuest);
+        if(!\Yii::$app->cache->exists('a1')){
+            echo "will set";
+            \Yii::$app->cache->set('a1',1);
+        }else{
+            echo "has set",\Yii::$app->cache->set('a1',1);
+        }
+        var_dump(\Yii::$app->testCompent);
         $query = Goods::find();
         $pagination = new Pagination([
             'defaultPageSize'=>3,

@@ -7,10 +7,11 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-frontend',
+    'id' => '0x0001',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','debug'],
     'controllerNamespace' => 'frontend\controllers',
+
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -36,6 +37,9 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'testCompent'=>[
+            'class'=>'stdClass',
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -44,6 +48,12 @@ return [
             ],
         ],
         */
+        'name'=>'adv',
+        'defaultRoute'=>'goods/lists',
+        'on beforeAction ' => function ($event) {
+            echo 111;
+            exit;
+        }
     ],
     'params' => $params,
 ];
