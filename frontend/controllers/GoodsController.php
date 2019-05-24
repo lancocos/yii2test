@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 use frontend\models\Goods;
+use frontend\models\Hello;
 use yii\data\Pagination;
 use yii\web\Controller;
 
@@ -19,7 +20,7 @@ class GoodsController extends Controller
     }
 
     public function actionLists(){
-        print_r(\Yii::$app->user->isGuest);
+        //print_r(\Yii::$app->user->isGuest);
         if(!\Yii::$app->cache->exists('a1')){
             echo "will set";
             \Yii::$app->cache->set('a1',1);
@@ -34,6 +35,17 @@ class GoodsController extends Controller
         ]);
         $goods = $query->offset($pagination->offset)->limit($pagination->limit)->all();
         return $this->renderPartial('lists',compact('goods','pagination'));
+    }
+
+    public function actionHello(){
+        $hello = new Hello;
+        $hello->setScenario('reg');
+        if($hello->load(\Yii::$app->request->post()) && $hello->validate()){
+            echo 111;
+        }
+        return $this->renderPartial('login',compact('hello'));
+
+
     }
 
 }
