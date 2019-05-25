@@ -36,4 +36,15 @@ class GoodsController extends Controller
         return $this->renderPartial('lists',compact('goods','pagination'));
     }
 
+    public function actionAbc(){
+        phpinfo();
+
+    }
+
+    public function actions(){
+        return[
+            'h1'=>'api\actions\HelloAction',
+        ];
+    }
+
 }

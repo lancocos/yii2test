@@ -9,8 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-api',
     'basePath' => dirname(__DIR__),
-    'controllerNamespace' => 'api\controllers',
-    'bootstrap' => ['log'],
+
     'modules' => [
         'v1' => [
             'class' => 'api\modules\v1\Module'
@@ -19,8 +18,13 @@ return [
             'class' => 'api\modules\v2\Module'
         ]
     ],
+
+
+    'controllerNamespace' => 'api\controllers',
+    'bootstrap' => ['log'],
+
     'user' => [
-        'identityClass' => 'common\models\User',
+        //'identityClass' => '',
 
     ],
     'components' => [
