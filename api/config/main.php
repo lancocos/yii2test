@@ -19,24 +19,21 @@ return [
             'class' => 'api\modules\v2\Module'
         ]
     ],
-    'user' => [
-        'identityClass' => 'common\models\User',
-
-    ],
+//    'user' => [
+//        //'identityClass' => 'common\models\User',
+//
+//    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
+        'user' => [
+            'identityClass' => 'common\models\User',
+            'enableAutoLogin' => false,
 
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],
+    ],
+
+
 
 
     ],

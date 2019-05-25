@@ -5,11 +5,14 @@ use frontend\models\Goods;
 use frontend\models\Hello;
 use yii\data\Pagination;
 use yii\web\Controller;
+use yii\web\Response;
 
 class GoodsController extends Controller
 {
     public function actionIndex()
     {
+        \Yii::$app->getResponse()->format=Response::FORMAT_JSON;
+        return ['name'=>'imwz','code'=>200];
         $model = new Goods();
         return $this->renderPartial('index',['model'=>$model]);
     }
