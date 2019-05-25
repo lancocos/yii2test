@@ -9,12 +9,26 @@ use yii\web\Response;
 
 class GoodsController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            'logtest'=>[
+                'class'=>\frontend\components\ActionTimeFilter::className(),
+            ],
+            'iptest'=>[
+                'class'=>\frontend\components\ActionIpFilter::className()
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
-        \Yii::$app->getResponse()->format=Response::FORMAT_JSON;
-        return ['name'=>'imwz','code'=>200];
+
+        //\Yii::$app->getResponse()->format=Response::FORMAT_JSON;
+        //return ['name'=>'imwz','code'=>200];
         $model = new Goods();
-        return $this->renderPartial('index',['model'=>$model]);
+        return $this->render('index',['model'=>$model]);
     }
 
     public function actionDetail($id=1){
