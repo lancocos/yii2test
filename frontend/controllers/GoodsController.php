@@ -56,7 +56,16 @@ class GoodsController extends Controller
 
 
     public function actionAbc(){
-        phpinfo();
+        $start = time();
+        $str = '';
+        while(time()-$start<=1){
+            echo microtime(true)."<br/>";
+            usleep(1000);
+
+        }
+        echo 1;
+
+
 
     }
 
