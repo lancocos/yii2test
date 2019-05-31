@@ -56,6 +56,7 @@ class GoodsController extends Controller
 
 
     public function actionAbc(){
+
         $start = time();
         $str = '';
         while(time()-$start<=1){
@@ -64,6 +65,7 @@ class GoodsController extends Controller
 
         }
         echo 1;
+
 
 
 
@@ -85,6 +87,12 @@ class GoodsController extends Controller
         return $this->renderPartial('login', compact('hello'));
 
 
+    }
+
+    public function actionAbc1(){
+
+        $gets = \Yii::$app->request->get();
+        print_r($gets);
     }
 
 }
