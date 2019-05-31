@@ -54,13 +54,26 @@ class GoodsController extends Controller
         return $this->renderPartial('lists',compact('goods','pagination'));
     }
 
-    public function actionHello(){
+
+    public function actionAbc(){
+        phpinfo();
+
+    }
+
+    public function actions()
+    {
+        return [
+            'h1' => 'api\actions\HelloAction',
+        ];
+    }
+    public function actionHello()
+    {
         $hello = new Hello;
         $hello->setScenario('reg');
-        if($hello->load(\Yii::$app->request->post()) && $hello->validate()){
+        if ($hello->load(\Yii::$app->request->post()) && $hello->validate()) {
             echo 111;
         }
-        return $this->renderPartial('login',compact('hello'));
+        return $this->renderPartial('login', compact('hello'));
 
 
     }

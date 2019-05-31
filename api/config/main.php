@@ -9,8 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-api',
     'basePath' => dirname(__DIR__),
-    'controllerNamespace' => 'api\controllers',
-    'bootstrap' => ['log'],
+
     'modules' => [
         'v1' => [
             'class' => 'api\modules\v1\Module'
@@ -19,10 +18,13 @@ return [
             'class' => 'api\modules\v2\Module'
         ]
     ],
-//    'user' => [
-//        //'identityClass' => 'common\models\User',
-//
-//    ],
+
+
+
+    'controllerNamespace' => 'api\controllers',
+    'bootstrap' => ['log'],
+
+
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
