@@ -78,7 +78,7 @@ class GoodsController extends Controller
 
     }
 
-    public function actionAbc(){
+    public function actionAbc1(){
 
         $gets = \Yii::$app->request->get();
         print_r($gets);
