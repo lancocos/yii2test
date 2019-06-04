@@ -1,6 +1,7 @@
 <?php
 
 namespace frontend\controllers;
+use app\models\Mms;
 use frontend\models\Goods;
 use frontend\models\Hello;
 use yii\data\Pagination;
@@ -93,6 +94,40 @@ class GoodsController extends Controller
 
         $gets = \Yii::$app->request->get();
         print_r($gets);
+    }
+
+
+    public function actionZs(){
+        $model = Mms::findOne(1);
+        if($model==null){
+            $model = new Mms;
+        }
+        if(\Yii::$app->request->isPost){
+
+            $data = \Yii::$app->request->post();
+            if($model->load($data) && $model->validate()){
+                //$model->version=0;
+                try{
+                    $model->save();
+                }catch (\Exception $e){
+                    return $e->getMessage();
+                }
+
+                return 'success';
+            }
+        }
+        return $this->renderPartial('mms',compact('model'));
+    }
+    public function actionZs1(){
+        $model = Mms::find(1)->asArray()->one();
+        var_dump($model);
+        exit;
+        $this->renderPartial('');
+    }
+
+    public function actionWww(){
+        echo 111;
+
     }
 
 }
