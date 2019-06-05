@@ -5,9 +5,11 @@ use app\models\Mms;
 use frontend\models\Goods;
 use frontend\models\Hello;
 use yii\data\Pagination;
+use yii\db\Query;
+use yii\db\QueryBuilder;
 use yii\web\Controller;
 use yii\web\Response;
-
+use Yii;
 class GoodsController extends Controller
 {
 
@@ -125,9 +127,37 @@ class GoodsController extends Controller
         $this->renderPartial('');
     }
 
-    public function actionWww(){
-        echo 111;
+    public function actionWww($name=''){
 
+
+        $sql = "SELECT * FROM goods where name = :name";
+
+        $res  = Yii::$app->db->createCommand($sql)->bindParam(':name',$name)->query();
+        $res = $res->readAll();
+        var_dump($res);
+
+    }
+
+    public function actionQuery(){
+        $query = new Query();
+        $data = $query->select('id','name')->from('goods')->where(['name'=>'abc11'])->limit(3)->orderBy('id','desc')->all();
+        var_dump($data);
+    }
+
+    public function actionO1(){
+        $goods = new Goods();
+        $goods->name="abcaaaa";
+        $goods->cover_id=123;
+        $goods->category_id=234;
+        $goods->branch_id=123;
+        $goods->price=23.56;
+        $goods->views=999;
+        $goods->status=1;
+        if($goods->save()){
+            echo 1;
+        }else{
+            echo 2;
+        }
     }
 
 }

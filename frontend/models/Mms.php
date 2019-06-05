@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\db\ActiveRecord;
 /**
  * This is the model class for table "mms".
  *
@@ -11,7 +11,7 @@ use Yii;
  * @property int $val
  * @property int $version
  */
-class Mms extends \yii\db\ActiveRecord
+class Mms extends ActiveRecord
 {
     const DATA_CREATE ='create';
     const DATA_UPDATE = 'update';
