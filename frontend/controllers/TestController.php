@@ -10,6 +10,7 @@ namespace frontend\controllers;
 
 
 use common\models\Test;
+use frontend\forms\ValidatorTest;
 use yii\web\Controller;
 
 class TestController extends  Controller
@@ -24,6 +25,15 @@ class TestController extends  Controller
             }
         }
         return $this->render('index',compact('model'));
+    }
+
+
+    public function actionValidator(){
+        $model = new ValidatorTest();
+        if(\Yii::$app->request->isPost && $model->load(\Yii::$app->request->post()) && $model->validate()){
+            var_dump($model);
+        }
+        return $this->renderPartial('validator',compact('model'));
     }
 
 }
